@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-wrapper">
+            <h1>Post your item</h1>
+            <form action="/post" method="POST">
+                <div class="form-input-box">
+                    <label for="item_name">item name</label>
+                    <input type="text" id="item_name" name="item_name" required>
+                </div>
+                <div class="form-input-box">
+                    <label for="item_type">item type</label>
+                    <input type="text" id="item_type" name="item_type" required>
+                </div>
+                <div class="form-input-box">
+                    <label for="quantity">quantity</label>
+                    <input type="text" id="quantity" name="quantity" required>
+                </div>
+                <div class="form-input-box">
+                    <label for="price">price</label>
+                    <input type="text" id="price" name="price" required>
+                </div>
+                <div class="form-input-box">
+                    <label for="image_url">image_url</label>
+                    <input type="text" id="image_url" name="image_url" required>
+                </div> 
+                <div class="form-input-box">
+                    <label for="item_detail">item detail</label>
+                    <input type="text" id="item_detail" name="item_detail" required>
+                </div>
+                <div class="createAccount">
+                    <button type="submit">post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

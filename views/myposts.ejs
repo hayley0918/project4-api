@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>My garage</h1>
+        <div class="item-wrapper">
+        <% items.forEach(function(item){ %>
+            <div class = "item-box">
+                <a href="/"><img src="<%= item.image_url%>" alt=""></a>
+                <p ><%= item.item_name %></p>
+                <p>Item type: <%= item.item_type %></p>
+                <p>Quantity: <%= item.quantity %></p>
+                <p>Price: <%= item.price %></p>
+                <p>Item details: <%= item.item_detail %></p>
+            </div>
+        <% }); %>
+            <form action="">
+                <button>update</button>
+            </form>
+        </div>
+</body>
+</html>

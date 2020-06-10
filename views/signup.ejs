@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class ="form-wrapper">
+      <h1>Create Account</h1>
+      <form action="/signup" method="POST">
+        <div class="form-input-box">
+          <label for="username">username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-input-box">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-input-box">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-input-box">
+          <label for="st_number">st_number</label>
+          <input type="text" id="st_number" name="st_number" required>
+        </div>
+        <div class="form-input-box">
+          <label for="address_street">address_street</label>
+          <input type="address_street" id="address_street" name="address_street" required>
+        </div>
+        <div class="form-input-box">
+          <label for="address_suburb">address_suburb</label>
+          <input type="address_suburb" id="address_suburb" name="address_suburb" required>
+        </div>
+        <div class="form-input-box">
+          <label for="address_state">address_state</label>
+          <input type="address_state" id="address_state" name="address_state" required>
+        </div>
+        <div class="form-input-box">
+          <label for="postcode">postcode</label>
+          <input type="postcode" id="postcode" name="postcode" required>
+        </div>
+        <div class="createAccount">
+          <button type="submit">signup</button>
+        </div>
+      </form>
+      <a href="/login">
+        <small>take me to login page!</small>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

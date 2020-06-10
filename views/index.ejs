@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- <h1>Hi <%= user.username %></h1> -->
+    <div class="header-wrapper">
+      <div class="app-title">Bootfinds</div>
+      <div class="buttons">
+        <form action="/logout?_method=DELETE" method="POST">
+          <button class="logout-btn" type="submit">Log Out</button>
+        </form>
+      </div>
+    </div>
+    <nav class="nav-wrapper">
+      <div class="search">
+          <h3>Search</h3>
+          <input type="text" placeholder="I'm looking for..."/>
+      </div>
+      <div class="location">
+          <h3>Location</h3>
+          <input type="text" placeholder="Australia..."/>
+      </div>
+      <div class="categories">
+          <h3>Categories</h3>
+          <div><a href="#">Art, Collectibiles</a></div>
+          <div><a href="#">Baby, Kids</a></div>
+          <div><a href="#">Books, Music and Games</a></div>
+          <div><a href="#">Cars, Vehicles</a></div>
+          <div><a href="#">Clothing</a></div>
+          <div><a href="#">Electronics</a></div>
+          <div><a href="#">Furnitures</a></div>
+          <div><a href="#">Sport gear</a></div>
+      </div>
+  </nav>
+</body>
+</html>
