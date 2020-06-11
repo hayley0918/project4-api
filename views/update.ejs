@@ -12,7 +12,7 @@
     <div class="wrapper">
         <div class="form-wrapper">
             <h1>update item</h1>
-            <form action="/items/_method=PUT" method="POST">
+            <form action="/items/<%= item.id %>" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-input-box">
                     <label for="item_name">item_name</label>
@@ -39,10 +39,7 @@
                     <input type="text" id="item_detail" name="item_detail" required>
                 </div>
                 <div class="createAccount">
-                    <form action="/items/<%= item.id %>">
-                        <input type="hidden" name="_method" value="put">
                         <button type="submit">update</button>
-                    </form>
                 </div>
             </form>
         </div>

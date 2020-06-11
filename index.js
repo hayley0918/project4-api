@@ -160,7 +160,8 @@ app.get("/items/:id", async(req, res)=>{
 
 // **** update item
 
-app.get('/items/:id/update', (req, res)=>{
+
+app.get('/items/:id/update', async(req, res)=>{
     const item = await findOneItemById(req.params.id)
     res.render('update.ejs', { item: item.rows[0] })
 })
