@@ -10,13 +10,10 @@
 </head>
 <body>
       <div class="header-wrapper">
-        <div class="app-title">Bootfinds</div>
+        <div class="app-title"><a href="/show">Bootfinds</a></div>
         <div class="buttons">
-          <form action="/myposts">
-            <button class="myposts" type="submit">Myboots</button>
-          </form>
           <form action="/post">
-            <button class="post" type="submit">Post</button>
+            <button class="logout-btn" type="submit">Post</button>
           </form>
           <form action="/logout?_method=DELETE" method="POST">
             <button class="logout-btn" type="submit">Log Out</button>
@@ -45,7 +42,7 @@
         </div>
     </nav>
     <div class="content-wrapper">
-        <h1>My boot</h1>
+        <h1 class="show-h1">My boot</h1>
         <div class="item-wrapper">
             <% items.forEach(function(item){ %>
                 <div class = "item-box">

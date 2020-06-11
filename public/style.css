@@ -11,6 +11,11 @@ body {
     background: #EBF3F5;
 }
 
+.app-title a{
+    font-family: 'Pacifico', cursive;
+    color: #FFFFFF;
+}
+
  .wrapper {
     height: 100vh;
     width: 100%;
