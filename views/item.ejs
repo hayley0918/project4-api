@@ -20,39 +20,53 @@
           </form>
         </div>
       </div>
-      <nav class="nav-wrapper">
-        <div class="search">
-            <h3>Search</h3>
-            <input type="text" placeholder="I'm looking for..."/>
+
+      <div class="grid-wrapper">
+        <nav class="nav-wrapper">
+            <div class="search">
+                <h3>Search</h3>
+                <input type="text" placeholder="I'm looking for..."/>
+            </div>
+            <div class="location">
+                <h3>Location</h3>
+                <input type="text" placeholder="Australia..."/>
+            </div>
+            <div class="categories">
+                <h3>Categories</h3>
+                <div><a href="#">Art, Collectibiles</a></div>
+                <div><a href="#">Baby, Kids</a></div>
+                <div><a href="#">Books, Music and Games</a></div>
+                <div><a href="#">Cars, Vehicles</a></div>
+                <div><a href="#">Clothing</a></div>
+                <div><a href="#">Electronics</a></div>
+                <div><a href="#">Furnitures</a></div>
+                <div><a href="#">Sport gear</a></div>
+            </div>
+        </nav>
+
+        <div class="content-wrapper">
+            <h1 class="show-h1">Item details</h1>
+            <div class="item-wrapper">
+                
+                
+                <div class = "item-box">
+                    <a href="/items/<%= item.id %>" style="background-image:url(<%= item.image_url%>);"></a>
+                    <div class="copy-wrapper">
+                        <h3><%= item.item_name %></h3>
+                        <p> <span>Seller contact</span><br /> <%= item.email %></p>
+                        <p><span>Item type</span><br /> <%= item.item_type %></p>
+                        <p><span>Quantity</span><br /> <%= item.quantity %></p>
+                        <p><span>$</span><%= item.price %></p>
+                        <p><span>Item details</span><br /> <%= item.item_detail %></p>
+                        <p><span>Location</span><br /> <%= item.address_suburb %>  <%= item.address_state %></p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="location">
-            <h3>Location</h3>
-            <input type="text" placeholder="Australia..."/>
-        </div>
-        <div class="categories">
-            <h3>Categories</h3>
-            <div><a href="#">Art, Collectibiles</a></div>
-            <div><a href="#">Baby, Kids</a></div>
-            <div><a href="#">Books, Music and Games</a></div>
-            <div><a href="#">Cars, Vehicles</a></div>
-            <div><a href="#">Clothing</a></div>
-            <div><a href="#">Electronics</a></div>
-            <div><a href="#">Furnitures</a></div>
-            <div><a href="#">Sport gear</a></div>
-        </div>
-    </nav>
-    <h1>Item details</h1>
-    <div class="item-wrapper">
-        <div class = "item-box">
-            <img src="<%= item.image_url%>" alt="">
-            <p ><%= item.item_name %></p>
-            <p>Seller contact: <%= item.email %></p>
-            <p>Item type: <%= item.item_type %></p>
-            <p>Quantity: <%= item.quantity %></p>
-            <p>Price: <%= item.price %></p>
-            <p>Item details: <%= item.item_detail %></p>
-            <p>Location:<%= item.address_suburb %>  <%= item.address_state %></p>
-        </div>
+    </div>
+
+    <div class="footer-wrapper">
+        <p>&copy; Bootfinds Hayley 2020 project4</p>
     </div>
 </body>
 </html>

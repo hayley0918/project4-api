@@ -9,15 +9,17 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="header-wrapper">
-    <div class="app-title">Bootfinds</div>
-  </div>
+ 
   <div class="wrapper">
+    <div class="greeting">
+      <p>Welcome to <span>Bootfinds</span></p>
+      <p>To start please Sign up</p>
+    </div>
     <div class ="form-wrapper">
       <h1>Create Account</h1>
       <form action="/signup" method="POST">
         <div class="form-input-box">
-          <label for="username">username</label>
+          <label for="username">Username</label>
           <input type="text" id="username" name="username" required>
         </div>
         <div class="form-input-box">
@@ -29,31 +31,31 @@
           <input type="password" id="password" name="password" required>
         </div>
         <div class="form-input-box">
-          <label for="st_number">st_number</label>
+          <label for="st_number">street number</label>
           <input type="text" id="st_number" name="st_number" required>
         </div>
         <div class="form-input-box">
-          <label for="address_street">address_street</label>
+          <label for="address_street">Street name</label>
           <input type="address_street" id="address_street" name="address_street" required>
         </div>
         <div class="form-input-box">
-          <label for="address_suburb">address_suburb</label>
+          <label for="address_suburb">Suburb</label>
           <input type="address_suburb" id="address_suburb" name="address_suburb" required>
         </div>
         <div class="form-input-box">
-          <label for="address_state">address_state</label>
+          <label for="address_state">State</label>
           <input type="address_state" id="address_state" name="address_state" required>
         </div>
         <div class="form-input-box">
-          <label for="postcode">postcode</label>
+          <label for="postcode">Postcode</label>
           <input type="postcode" id="postcode" name="postcode" required>
         </div>
         <div class="createAccount">
-          <button type="submit">signup</button>
+          <button type="submit">Signup</button>
         </div>
       </form>
       <a href="/login">
-        <small>take me to login page!</small>
+        Take me to login page!
       </a>
     </div>
   </div>

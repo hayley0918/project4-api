@@ -20,44 +20,46 @@
           </form>
         </div>
       </div>
-      <nav class="nav-wrapper">
-        <div class="search">
-            <h3>Search</h3>
-            <input type="text" placeholder="I'm looking for..."/>
-        </div>
-        <div class="location">
-            <h3>Location</h3>
-            <input type="text" placeholder="Australia..."/>
-        </div>
-        <div class="categories">
-            <h3>Categories</h3>
-            <div><a href="#">Art, Collectibiles</a></div>
-            <div><a href="#">Baby, Kids</a></div>
-            <div><a href="#">Books, Music and Games</a></div>
-            <div><a href="#">Cars, Vehicles</a></div>
-            <div><a href="#">Clothing</a></div>
-            <div><a href="#">Electronics</a></div>
-            <div><a href="#">Furnitures</a></div>
-            <div><a href="#">Sport gear</a></div>
-        </div>
-    </nav>
-    <div class="content-wrapper">
-        <h1 class="show-h1">Items in the boot</h1>
-        <div class="item-wrapper">
-            <% items.forEach(function(item){ %>
-                <div class = "item-box">
-                    <a href="/items/<%= item.id %>" style="background-image:url(<%= item.image_url%>);"></a>
-                    <div class="copy-wrapper">
-                        <p><%= item.item_name %></p>
-                        <p>$ <%= item.price %></p>
-                        <p><%= item.address_suburb %></p>
-                        <p><%= item.address_state %></p>
+
+
+      <div class="grid-wrapper">
+        <nav class="nav-wrapper">
+            <div class="search">
+                <h3>Search</h3>
+                <input type="text" placeholder="I'm looking for..."/>
+            </div>
+            <div class="location">
+                <h3>Location</h3>
+                <input type="text" placeholder="Australia..."/>
+            </div>
+            <div class="categories">
+                <h3>Categories</h3>
+                <div><a href="#">Art, Collectibiles</a></div>
+                <div><a href="#">Baby, Kids</a></div>
+                <div><a href="#">Books, Music and Games</a></div>
+                <div><a href="#">Cars, Vehicles</a></div>
+                <div><a href="#">Clothing</a></div>
+                <div><a href="#">Electronics</a></div>
+                <div><a href="#">Furnitures</a></div>
+                <div><a href="#">Sport gear</a></div>
+            </div>
+        </nav>
+        <div class="content-wrapper">
+            <h1 class="show-h1">Items in the boot</h1>
+            <div class="item-wrapper">
+                <% items.forEach(function(item){ %>
+                    <div class = "item-box">
+                        <a href="/items/<%= item.id %>" style="background-image:url(<%= item.image_url%>);"></a>
+                        <div class="copy-wrapper">
+                            <p><%= item.item_name %></p>
+                            <p><span>$</span><%= item.price %></p>
+                            <p><%= item.address_suburb %>, <%= item.address_state %></p>
+                        </div>
                     </div>
-                </div>
-            <% }); %>
+                <% }); %>
+            </div>
         </div>
-    </div>
-    <div class="clear"></div>
+      </div>
     <div class="footer-wrapper">
         <p>&copy; Bootfinds Hayley 2020 project4</p>
     </div>

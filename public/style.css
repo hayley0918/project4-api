@@ -49,6 +49,13 @@ body {
     box-shadow: 0px 10px 50px #555;
     background-color: #ffffff;
   }
+
+  .form-wrapper a {
+      text-align: center;
+      text-decoration: underline;
+      color: #0E3A48;
+      padding-top: 16px;
+  }
   
   form {
     width: 100%;
@@ -63,6 +70,7 @@ body {
     font-weight: lighter;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      padding-bottom: 16px;
   }
   
   label {
@@ -171,7 +179,7 @@ body {
     grid-template-columns: 1fr;
 }
 
-.buttons button{
+.buttons button, button{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -180,16 +188,24 @@ body {
     border-radius: 6px;
     margin: 10px 0;
     border: 1px solid #34A8A8;
+    min-width: 75px;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 }
 
   /* index nav style */
   .nav-wrapper{
-    width: 25%;
     padding: 40px 32px;
     background: #fff;
-    float: left;
     min-height: 100vh;
     height: auto;
+ }
+
+ .nav-wrapper > div { 
+ margin-bottom: 24px;
  }
  
  .nav-wrapper h3{
@@ -212,8 +228,6 @@ body {
  /* show page style */
 
  .content-wrapper {
-     width: 75%;
-     float: left;
      padding: 40px 0 0 32px;
  }
 
@@ -233,7 +247,7 @@ body {
  .item-box{
     margin: 0 32px 32px 0;
      background: #fff;
-     border-radius: 0 0 6px 6px;
+     border-radius: 6px;
  }
 
  .item-box a { 
@@ -246,11 +260,19 @@ body {
     background-position: center center;
  }
 
+ .item-box h3{
+ padding: 0 0 10px 0;
+}
+
  .item-box p{
-     font-size: 1.2rem;
+     font-size: 1rem;
      text-align: left;
      margin-top: 5px;
  }
+
+ .blue {
+    color:#34A8A8;
+}
 
  .show-h1{
      font-weight: bold;
@@ -261,6 +283,25 @@ body {
 
  .copy-wrapper {
      padding: 16px;
+     text-transform: capitalize;
+ }
+ .copy-wrapper p {
+     margin-bottom: 10px;
+}
+
+ .copy-wrapper span {
+     font-weight: 400;
+     color: #000;
+ }
+ 
+ .copy-wrapper button {
+    width: 100%;
+    background-color: #258ea6;
+    color: #fff;
+    margin-top: 0;
+ }
+ .copy-wrapper button:nth-child(2) {
+    background-color: #0E3A48;
  }
 
  .clear {
