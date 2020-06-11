@@ -166,9 +166,12 @@ app.get('/items/:id/update', async(req, res)=>{
     res.render('update.ejs', { item: item.rows[0] })
 })
 
-app.put('/items/:id', async (req, res) => {
+app.put('/items/:id/update', async (req, res) => {
+        console.log('hello')
         const { id } = req.params
+
         await updateItem({
+            id: id,
             item_name: req.body.item_name,
             item_type: req.body.item_type,
             quantity: req.body.quantity,

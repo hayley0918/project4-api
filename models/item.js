@@ -9,7 +9,7 @@ function createItemPost(params) {
 }
 
 function findOneItemById(id) {
-  return db.query('select * from items where id = $1;', [id])
+    return db.query('select * from items where id = $1;', [id])
 }
 
 function findItemsFromUser(seller_id){
@@ -17,7 +17,7 @@ function findItemsFromUser(seller_id){
 }
 
 function updateItem(params){
-    return db.query('update items set item_name = $1, item_type = $2, quantity = $3, price = $4, image_url = $5, item_detail = $6 where id = $7;', [params.item_name, params.item_type, params.quantity, params.price, params.image_url, params.item_detail, id])
+    return db.query('update items set item_name = $1, item_type = $2, quantity = $3, price = $4, image_url = $5, item_detail = $6 where id = $7;', [params.item_name, params.item_type, params.quantity, params.price, params.image_url, params.item_detail, params.id])
 }
 
 function deleteItem(id){
