@@ -5,7 +5,7 @@ function getAllItems() {
 }
 
 function createItemPost(params) {
-  return db.query('insert into items (item_name, item_type, quantity, price, image_url, item_detail) values ($1, $2, $3, $4, $5, $6);', [params.item_name, params.item_type, params.quantity, params.price, params.image_url, params.item_detail])
+  return db.query('insert into items (seller_id, item_name, item_type, quantity, price, image_url, item_detail) values ($1, $2, $3, $4, $5, $6, $7);', [params.seller_id, params.item_name, params.item_type, params.quantity, params.price, params.image_url, params.item_detail])
 }
 
 function findOneItemById(id) {

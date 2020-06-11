@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
 }
 
-const { createUser, getUserById, getUserByEmail, joinUserAndItemTable } = require('./models/user')
+const { createUser, getUserById, getUserByEmail, joinUserAndItemTable, singleItemJoinUserAndItemTable } = require('./models/user')
 const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem } = require('./models/item')
 
 const express = require("express")
@@ -96,12 +96,6 @@ app.get('/api/items', async(req, res)=>{
     res.json(items.rows)
 })
 
-// show all the items
-// app.get('/show', async (req, res)=>{
-//     const items = await axios.get('http://localhost:5000/api/items').then(res => res.data)
-//     res.render('show.ejs', {items: items})
-// })
-
 // join the table to display seller location
 app.get('/show', async (req, res)=>{
     const items = await joinUserAndItemTable()
@@ -118,6 +112,7 @@ app.get('/post', (req, res)=>{
 app.post('/post', async(req, res)=>{
     try {
         await createItemPost({
+          seller_id: req.user.id,
           item_name: req.body.item_name,
           item_type: req.body.item_type,
           quantity: req.body.quantity,
@@ -160,8 +155,13 @@ app.get("/api/items/:id", async(req, res)=>{
     }
 })
 
+// app.get("/items/:id", async(req, res)=>{
+//     const item = await findOneItemById(req.params.id)
+//     res.render('item.ejs', { item: item.rows[0] })
+// })
+
 app.get("/items/:id", async(req, res)=>{
-    const item = await findOneItemById(req.params.id)
+    const item = await singleItemJoinUserAndItemTable(req.params.id)
     res.render('item.ejs', { item: item.rows[0] })
 })
 

@@ -15,12 +15,18 @@ function getUserByEmail(email){
 // to display the seller location in the item card
 
 function joinUserAndItemTable(){
-    return db.query('select users.email, users.st_number, users.address_street, users.address_suburb, users.address_state, users.postcode, items.image_url, items.price, items.item_name, items.item_type, items.quantity, items.item_detail, items.id from users inner join items on users.id = items.seller_id;')
+    return db.query('select users.address_suburb, users.address_state, items.image_url, items.item_name, items.price, items.id from users inner join items on users.id = items.seller_id;')
+}
+
+// for single item detail
+function singleItemJoinUserAndItemTable(id){
+    return db.query('select users.email, users.st_number, users.address_street, users.address_suburb, users.address_state, users.postcode, items.image_url, items.price, items.item_name, items.item_type, items.quantity, items.item_detail, items.id from users inner join items on users.id = items.seller_id where items.id = $1;', [id])
 }
 
 module.exports = {
   createUser: createUser,
   getUserById: getUserById,
   getUserByEmail: getUserByEmail,
-  joinUserAndItemTable: joinUserAndItemTable
+  joinUserAndItemTable: joinUserAndItemTable,
+  singleItemJoinUserAndItemTable: singleItemJoinUserAndItemTable
 }
