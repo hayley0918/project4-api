@@ -9,21 +9,64 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>My garage</h1>
-        <div class="item-wrapper">
-        <% items.forEach(function(item){ %>
-            <div class = "item-box">
-                <a href="/"><img src="<%= item.image_url%>" alt=""></a>
-                <p ><%= item.item_name %></p>
-                <p>Item type: <%= item.item_type %></p>
-                <p>Quantity: <%= item.quantity %></p>
-                <p>Price: <%= item.price %></p>
-                <p>Item details: <%= item.item_detail %></p>
-            </div>
-        <% }); %>
-            <form action="">
-                <button>update</button>
-            </form>
+      <div class="header-wrapper">
+        <div class="app-title">Bootfinds</div>
+        <div class="buttons">
+          <form action="/myposts">
+            <button class="myposts" type="submit">Myboots</button>
+          </form>
+          <form action="/post">
+            <button class="post" type="submit">Post</button>
+          </form>
+          <form action="/logout?_method=DELETE" method="POST">
+            <button class="logout-btn" type="submit">Log Out</button>
+          </form>
         </div>
+      </div>
+      <nav class="nav-wrapper">
+        <div class="search">
+            <h3>Search</h3>
+            <input type="text" placeholder="I'm looking for..."/>
+        </div>
+        <div class="location">
+            <h3>Location</h3>
+            <input type="text" placeholder="Australia..."/>
+        </div>
+        <div class="categories">
+            <h3>Categories</h3>
+            <div><a href="#">Art, Collectibiles</a></div>
+            <div><a href="#">Baby, Kids</a></div>
+            <div><a href="#">Books, Music and Games</a></div>
+            <div><a href="#">Cars, Vehicles</a></div>
+            <div><a href="#">Clothing</a></div>
+            <div><a href="#">Electronics</a></div>
+            <div><a href="#">Furnitures</a></div>
+            <div><a href="#">Sport gear</a></div>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <h1>My boot</h1>
+        <div class="item-wrapper">
+            <% items.forEach(function(item){ %>
+                <div class = "item-box">
+                    <a href="/items/<%= item.id %>" style="background-image:url(<%= item.image_url%>);"></a>
+                    <div class="copy-wrapper">
+                        <p ><%= item.item_name %></p>
+                        <p>Item type: <%= item.item_type %></p>
+                        <p>Quantity: <%= item.quantity %></p>
+                        <p>Price: <%= item.price %></p>
+                        <p>Item details: <%= item.item_detail %></p>
+                        <form action="/items/<%= item.id %>/update">
+                            <button>update</button>
+                        </form>
+                        <form action="/items/<%= item.id %>" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button>delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
 </body>
 </html>

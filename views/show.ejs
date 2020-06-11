@@ -11,7 +11,10 @@
 <body>
       <div class="header-wrapper">
         <div class="app-title">Bootfinds</div>
-        <div class="buttons onecol">
+        <div class="buttons">
+          <form action="/myposts">
+            <button class="myposts" type="submit">Myboots</button>
+          </form>
           <form action="/logout?_method=DELETE" method="POST">
             <button class="logout-btn" type="submit">Log Out</button>
           </form>
@@ -47,7 +50,6 @@
                     <div class="copy-wrapper">
                         <p><%= item.item_name %></p>
                         <p>$ <%= item.price %></p>
-
                     </div>
                 </div>
             <% }); %>
@@ -55,7 +57,7 @@
     </div>
     <div class="clear"></div>
     <div class="footer-wrapper">
-        <p>Bootfinds, all right reserved</p>
+        <p>&copy; Bootfinds Hayley 2020 project4</p>
     </div>
 
 </body>

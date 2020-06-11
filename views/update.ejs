@@ -39,7 +39,10 @@
                     <input type="text" id="item_detail" name="item_detail" required>
                 </div>
                 <div class="createAccount">
-                    <button type="submit">update</button>
+                    <form action="/items/<%= item.id %>">
+                        <input type="hidden" name="_method" value="put">
+                        <button type="submit">update</button>
+                    </form>
                 </div>
             </form>
         </div>

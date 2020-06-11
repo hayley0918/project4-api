@@ -15,8 +15,8 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const axios = require('axios')
-// const partials = require('express-partials');
-// const expressLayouts = require('express-ejs-layouts')
+const bodyParser = require('body-parser');
+
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -26,7 +26,6 @@ initializePassport(
 )
 
 app.set('view-engine', 'ejs')
-// app.use(partials())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
@@ -38,7 +37,8 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
-// app.use(expressLayouts)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
 
 // middleware
 app.use(cors())
@@ -85,18 +85,13 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/show',
     failureRedirect: '/login',
     failureFlash: true
 }))
 
 // get all Items
 app.get('/api/items', async(req, res)=>{
-    const items = await getAllItems()
-    res.json(items.rows)
-})
-
-app.get('/items', async(req, res)=>{
     const items = await getAllItems()
     res.json(items.rows)
 })
@@ -123,13 +118,13 @@ app.post('/post', async(req, res)=>{
           image_url: req.body.image_url,
           item_detail: req.body.item_detail
         })
-        res.redirect('/')
+        res.redirect('/myposts')
       } catch {
         res.redirect('/post')
       }
 })
 
-// ******* get my posts
+// get my posts
 app.get("/api/myposts", async(req, res)=>{
     try{
         const myPosts = await findItemsFromUser(req.user.id)
@@ -139,8 +134,10 @@ app.get("/api/myposts", async(req, res)=>{
     }
 })
 
-app.get("/myposts", async(req, res)=>{
-    const items = await axios.get('http://localhost:5000/api/myposts').then(dbRes => console.log(dbRes.data))
+
+app.get('/myposts', async (req,res) => {
+    const results = await findItemsFromUser(req.user.id)
+    const items = results.rows
     res.render('myposts.ejs', {items: items})
 })
 
@@ -157,41 +154,38 @@ app.get("/api/items/:id", async(req, res)=>{
 })
 
 app.get("/items/:id", async(req, res)=>{
-    const item = await axios.get('http://localhost:5000//api/items/:id').then(res => console.log(res))
-    res.render('item.ejs', { item: item })
+    const item = await findOneItemById(req.params.id)
+    res.render('item.ejs', { item: item.rows[0] })
 })
 
 // **** update item
 
-app.get('/update', (req, res)=>{
-    res.render('update.ejs')
+app.get('/items/:id/update', (req, res)=>{
+    const item = await findOneItemById(req.params.id)
+    res.render('update.ejs', { item: item.rows[0] })
 })
 
 app.put('/items/:id', async (req, res) => {
-    try{
         const { id } = req.params
-        const { item_name, item_type, quantity, price, image_url, item_detail } = req.body
-        await updateItem(req.body)
-        res.json("updated successfully")
-    }catch(err){
-        console.error(err.essage)
-    }
+        await updateItem({
+            item_name: req.body.item_name,
+            item_type: req.body.item_type,
+            quantity: req.body.quantity,
+            price: req.body.price,
+            image_url: req.body.image_url,
+            item_detail: req.body.item_detail
+        })
+        res.redirect('/myposts')
 })
-
 
 
 // delete item
-app.delete("/items/:id", async(req, res)=>{
-    try{
-        const {id} = req.params
-        const deleteItem = await deleteItem(id)
-        res.json('item is deleted')
-    }catch (err){
-        console.log(err.message)
-    }
+app.post("/items/:id", (req, res)=>{
+    const {id} = req.params
+    deleteItem(id)
+
+    res.redirect('/myposts')
 })
-
-
 
 // logout
 app.delete('/logout', (req, res)=>{
