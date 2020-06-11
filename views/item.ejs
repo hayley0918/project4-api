@@ -46,11 +46,12 @@
         <div class = "item-box">
             <img src="<%= item.image_url%>" alt="">
             <p ><%= item.item_name %></p>
+            <p>Seller contact: <%= item.email %></p>
             <p>Item type: <%= item.item_type %></p>
             <p>Quantity: <%= item.quantity %></p>
             <p>Price: <%= item.price %></p>
             <p>Item details: <%= item.item_detail %></p>
-            <p>Location:</p>
+            <p>Location:<%= item.address_suburb %>  <%= item.address_state %></p>
         </div>
     </div>
 </body>

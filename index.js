@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
 }
 
-const { createUser, getUserById, getUserByEmail } = require('./models/user')
+const { createUser, getUserById, getUserByEmail, joinUserAndItemTable } = require('./models/user')
 const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem } = require('./models/item')
 
 const express = require("express")
@@ -97,9 +97,16 @@ app.get('/api/items', async(req, res)=>{
 })
 
 // show all the items
+// app.get('/show', async (req, res)=>{
+//     const items = await axios.get('http://localhost:5000/api/items').then(res => res.data)
+//     res.render('show.ejs', {items: items})
+// })
+
+// join the table to display seller location
 app.get('/show', async (req, res)=>{
-    const items = await axios.get('http://localhost:5000/api/items').then(res => res.data)
-    res.render('show.ejs', {items: items})
+    const items = await joinUserAndItemTable()
+    console.log(items.rows)
+    res.render('show.ejs', {items: items.rows})
 })
 
 
