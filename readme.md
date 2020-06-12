@@ -10,9 +10,9 @@ Let's post the items to the app and sell the items from home.
 
 ## Screenshots of the app
 
-![login][./public/login.png]
-![item_detail][./public/item_details.png]
-![myboot][./public/myboot.png]
+![login](./public/login.png)
+![item_detail](./public/item_details.png)
+![myboot](./public/myboot.png)
 
 ## Deployment
 
