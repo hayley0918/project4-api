@@ -10,9 +10,9 @@ Let's post the items to the app and sell the items from home.
 
 ## Screenshots of the app
 
-![login](./public/login.png =250x250)
-![item_detail](./public/item_details.png =250x250)
-![myboot](./public/myboot.png =250x250)
+![login|medium](./public/login.png)
+![item_detail|medium](./public/item_details.png)
+![myboot|medium](./public/myboot.png)
 
 ## Deployment
 
