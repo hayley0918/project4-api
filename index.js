@@ -16,6 +16,8 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const axios = require('axios')
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
+
 
 
 const initializePassport = require('./passport-config')
@@ -221,6 +223,6 @@ function checkNotAuthenticated(req, res, next){
 }
 
 
-app.listen(5000, ()=>{
-    console.log("server has started on port 5000")
+app.listen(port, ()=>{
+    console.log(`server has started on port ${port}`)
 })
