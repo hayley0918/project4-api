@@ -18,8 +18,6 @@ const axios = require('axios')
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
-
-
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
@@ -81,7 +79,6 @@ app.post('/signup', checkNotAuthenticated, async (req, res) => {
 })
 
 // login
-
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs')
 })
@@ -104,7 +101,6 @@ app.get('/show', async (req, res)=>{
     console.log(items.rows)
     res.render('show.ejs', {items: items.rows})
 })
-
 
 app.get('/post', (req, res)=>{
     res.render('post.ejs') 
@@ -138,7 +134,6 @@ app.get("/api/myposts", async(req, res)=>{
     }
 })
 
-
 app.get('/myposts', async (req,res) => {
     const results = await findItemsFromUser(req.user.id)
     const items = results.rows
@@ -157,19 +152,12 @@ app.get("/api/items/:id", async(req, res)=>{
     }
 })
 
-// app.get("/items/:id", async(req, res)=>{
-//     const item = await findOneItemById(req.params.id)
-//     res.render('item.ejs', { item: item.rows[0] })
-// })
-
 app.get("/items/:id", async(req, res)=>{
     const item = await singleItemJoinUserAndItemTable(req.params.id)
     res.render('item.ejs', { item: item.rows[0] })
 })
 
-// **** update item
-
-
+// update item
 app.get('/items/:id/update', async(req, res)=>{
     const item = await findOneItemById(req.params.id)
     res.render('update.ejs', { item: item.rows[0] })
@@ -191,7 +179,6 @@ app.put('/items/:id/update', async (req, res) => {
         res.redirect('/myposts')
 })
 
-
 // delete item
 app.post("/items/:id", (req, res)=>{
     const {id} = req.params
@@ -205,7 +192,6 @@ app.delete('/logout', (req, res)=>{
     req.logOut()
     res.redirect('/login')
 })
-
 
 function checkAuthenticated(req, res, next){
     if(req.isAuthenticated()){
@@ -221,7 +207,6 @@ function checkNotAuthenticated(req, res, next){
     }
     next()
 }
-
 
 app.listen(port, ()=>{
     console.log(`server has started on port ${port}`)
