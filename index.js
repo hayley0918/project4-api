@@ -73,7 +73,8 @@ app.post('/signup', checkNotAuthenticated, async (req, res) => {
         postcode: req.body.postcode
       })
       res.redirect('/login')
-    } catch {
+    } catch(error) {
+        console.log(`this is the error ${error}`)
       res.redirect('/signup')
     }
 })
