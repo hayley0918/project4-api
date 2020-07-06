@@ -28,6 +28,10 @@ function findItemsByItemType(item_type){
   return db.query('select * from items where item_type = $1;', [item_type])
 }
 
+function findItemsByItemName(item_name){
+  return db.query('select * from items where item_name = $1;', [item_name])
+}
+
 module.exports = {
   getAllItems: getAllItems,
   createItemPost: createItemPost,
@@ -35,5 +39,6 @@ module.exports = {
   findItemsFromUser: findItemsFromUser,
   updateItem: updateItem,
   deleteItem: deleteItem,
-  findItemsByItemType: findItemsByItemType
+  findItemsByItemType: findItemsByItemType,
+  findItemsByItemName: findItemsByItemName
 }

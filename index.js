@@ -3,7 +3,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const { createUser, getUserById, getUserByEmail, joinUserAndItemTable, singleItemJoinUserAndItemTable } = require('./models/user')
-const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType } = require('./models/item')
+const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType, findItemsByItemName } = require('./models/item')
 
 const express = require("express")
 const app = express()
@@ -107,12 +107,21 @@ app.get('/post', (req, res)=>{
 })
 
 // categories(search by the item type)
-// query string to make a request?
 app.get('/show/:item_type', async(req, res)=>{
     const {item_type} = req.params
     const results = await findItemsByItemType(item_type)
     const items = results.rows
     console.log(items)
+    res.render('category.ejs', {items: items})
+})
+
+// search item by it's name
+// Pattern Matching, compare user search input and db item_name
+// Taking data from db and display on the browser
+app.get('/show/:item_name', async(req, res)=>{
+    const {item_name} = req.params
+    const results = await findItemsByItemName(item_name)
+    const items = results.rows
     res.render('category.ejs', {items: items})
 })
 
