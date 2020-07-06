@@ -3,7 +3,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const { createUser, getUserById, getUserByEmail, joinUserAndItemTable, singleItemJoinUserAndItemTable } = require('./models/user')
-const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem } = require('./models/item')
+const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType } = require('./models/item')
 
 const express = require("express")
 const app = express()
@@ -99,12 +99,21 @@ app.get('/api/items', async(req, res)=>{
 // join the table to display seller location
 app.get('/show', async (req, res)=>{
     const items = await joinUserAndItemTable()
-    console.log(items.rows)
     res.render('show.ejs', {items: items.rows})
 })
 
 app.get('/post', (req, res)=>{
     res.render('post.ejs') 
+})
+
+// categories(search by the item type)
+// query string to make a request?
+app.get('/show/:item_type', async(req, res)=>{
+    const {item_type} = req.params
+    const results = await findItemsByItemType(item_type)
+    const items = results.rows
+    console.log(items)
+    res.render('category.ejs', {items: items})
 })
 
 // create item

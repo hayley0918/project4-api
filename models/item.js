@@ -24,11 +24,16 @@ function deleteItem(id){
     return db.query('delete from items where id = $1', [id])
 }
 
+function findItemsByItemType(item_type){
+  return db.query('select * from items where item_type = $1;', [item_type])
+}
+
 module.exports = {
   getAllItems: getAllItems,
   createItemPost: createItemPost,
   findOneItemById: findOneItemById,
   findItemsFromUser: findItemsFromUser,
   updateItem: updateItem,
-  deleteItem: deleteItem
+  deleteItem: deleteItem,
+  findItemsByItemType: findItemsByItemType
 }
