@@ -23,7 +23,10 @@
       <nav class="nav-wrapper">
         <div class="search">
             <h3>Search</h3>
-            <input type="text" placeholder="I'm looking for..."/>
+            <form action="/search" method="post">
+              <input type="text" name="item_name" placeholder="I'm looking for..."/>
+              <button type="submit">Search</button> 
+            </form>
         </div>
         <div class="location">
             <h3>Location</h3>

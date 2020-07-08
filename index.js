@@ -3,7 +3,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const { createUser, getUserById, getUserByEmail, joinUserAndItemTable, singleItemJoinUserAndItemTable } = require('./models/user')
-const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType, findItemsByItemName } = require('./models/item')
+const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType, findItemsByItemName, findItemsBySuburb } = require('./models/item')
 
 const express = require("express")
 const app = express()
@@ -111,18 +111,26 @@ app.get('/show/:item_type', async(req, res)=>{
     const {item_type} = req.params
     const results = await findItemsByItemType(item_type)
     const items = results.rows
-    console.log(items)
     res.render('category.ejs', {items: items})
 })
 
 // search item by it's name
-// Pattern Matching, compare user search input and db item_name
-// Taking data from db and display on the browser
-app.get('/show/:item_name', async(req, res)=>{
-    const {item_name} = req.params
+app.post('/search', async(req, res)=>{
+    const item_name = req.body.item_name
     const results = await findItemsByItemName(item_name)
     const items = results.rows
     res.render('category.ejs', {items: items})
+})
+
+// search item by it's suburb
+app.post('/suburb', async(req, res)=>{
+    const joinedTable = joinUserAndItemTable()
+    const joinedTableArr = joinedTable.rows
+    const suburb = req.body.address_suburb
+    const results = await findItemsBySuburb(suburb)
+    const items = results.rows
+    console.log(items)
+    // res.render('category.ejs', {items: items})
 })
 
 // create item
