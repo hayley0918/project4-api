@@ -90,6 +90,12 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     failureFlash: true
 }))
 
+// 
+app.get('/', async (req, res)=>{
+    const items = await joinUserAndItemTable()
+    res.render('show.ejs', {items: items.rows})
+})
+
 // get all Items
 app.get('/api/items', async(req, res)=>{
     const items = await getAllItems()
