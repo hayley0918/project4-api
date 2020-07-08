@@ -33,11 +33,6 @@ function findItemsByItemName(item_name){
   return db.query(`select * from items where item_name like '%${item_name}%';`)
 }
 
-function findItemsBySuburb(address_suburb){
-  address_suburb = address_suburb.toLowerCase()
-  return db.query(`select * from items where address_suburb like '%${address_suburb}%';`)
-}
-
 module.exports = {
   getAllItems: getAllItems,
   createItemPost: createItemPost,
@@ -46,6 +41,5 @@ module.exports = {
   updateItem: updateItem,
   deleteItem: deleteItem,
   findItemsByItemType: findItemsByItemType,
-  findItemsByItemName: findItemsByItemName,
-  findItemsBySuburb: findItemsBySuburb
+  findItemsByItemName: findItemsByItemName
 }

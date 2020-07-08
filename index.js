@@ -3,7 +3,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const { createUser, getUserById, getUserByEmail, joinUserAndItemTable, singleItemJoinUserAndItemTable } = require('./models/user')
-const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType, findItemsByItemName, findItemsBySuburb } = require('./models/item')
+const { createItemPost, findOneItemById, getAllItems, findItemsFromUser, updateItem, deleteItem, findItemsByItemType, findItemsByItemName } = require('./models/item')
 
 const express = require("express")
 const app = express()
