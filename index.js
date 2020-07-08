@@ -124,13 +124,11 @@ app.post('/search', async(req, res)=>{
 
 // search item by it's suburb
 app.post('/suburb', async(req, res)=>{
-    const joinedTable = joinUserAndItemTable()
+    const joinedTable = await joinUserAndItemTable()
     const joinedTableArr = joinedTable.rows
     const suburb = req.body.address_suburb
-    const results = await findItemsBySuburb(suburb)
-    const items = results.rows
-    console.log(items)
-    // res.render('category.ejs', {items: items})
+    const items = joinedTableArr.filter(elem=>elem.address_suburb === `${suburb}`)
+    res.render('category.ejs', {items: items})
 })
 
 // create item
