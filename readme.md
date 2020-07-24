@@ -9,6 +9,11 @@ Also to have the spot at the fleamarket will cost you some money and you will ha
 Let's post the items to the app and sell the items from home.
 
 ## Screenshots of the app
+https://agile-oasis-81580.herokuapp.com/login
+
+to try the app
+- email: hayley@ga.co
+- password: hello
 
 <p align="center">
     <img src="./public/login.png" width="350" height="350">
